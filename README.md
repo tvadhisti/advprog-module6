@@ -24,6 +24,9 @@ The new ```handle_connection``` method serves an HTTP response based on a fixed 
 ![image](https://github.com/tvadhisti/advprog-module6/assets/127074983/885b17bc-7ed5-4aab-a756-bbdff3137918) 
 ![image](https://github.com/tvadhisti/advprog-module6/assets/127074983/7faf516e-6574-44de-b9b6-63c7c37fd54e)
 
+# Commit 3 Reflection notes
+The ```handle_connection``` method has been upgraded to better manage different kinds of website requests. When the function gets a request, it first reads the top line to see what the visitor is asking for. If the request is for the main page, marked by ```GET / HTTP/1.1```, the server sends back a positive response with the ```hello.html``` page, telling the visitor everything is okay (200 OK). However, if the request is for a page or resource that isn't available, the server sends back an error page, ```404.html```. This setup helps the server respond correctly depending on what the visitor is looking for.
+
 
 
 
