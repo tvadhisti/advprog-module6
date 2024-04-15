@@ -11,4 +11,20 @@ The ```handle_connection``` method is fundamental in processing incoming TCP con
 7. ```collect()``` Gathers all processed lines into the http_request vector.
 8. ```println!("Request: {:#?}", http_request)``` Prints out the entire HTTP request.
 
+
+# Commit 2 Reflection notes
+The new ```handle_connection``` method serves an HTTP response based on a fixed HTML file.
+1. ```status_line``` For the HTTP response indicating that the request was successful ("HTTP/1.1 200 OK").
+2. ```contents``` Reads and unwraps the content of "hello.html".
+3. ```length``` Calculates the length of the response content.
+4. ```response``` Formats a complete HTTP response string. 
+5. ```stream.write_all(response.as_bytes()).unwrap()``` Sends the complete HTTP response including headers and the HTML content.
+
+
+![image](https://github.com/tvadhisti/advprog-module6/assets/127074983/885b17bc-7ed5-4aab-a756-bbdff3137918) 
+![image](https://github.com/tvadhisti/advprog-module6/assets/127074983/7faf516e-6574-44de-b9b6-63c7c37fd54e)
+
+
+
+
    
