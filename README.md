@@ -27,6 +27,15 @@ The new ```handle_connection``` method serves an HTTP response based on a fixed 
 # Commit 3 Reflection notes
 The ```handle_connection``` method has been upgraded to better manage different kinds of website requests. When the function gets a request, it first reads the top line to see what the visitor is asking for. If the request is for the main page, marked by ```GET / HTTP/1.1```, the server sends back a positive response with the ```hello.html``` page, telling the visitor everything is okay (200 OK). However, if the request is for a page or resource that isn't available, the server sends back an error page, ```404.html```. This setup helps the server respond correctly depending on what the visitor is looking for.
 
+# Commit 4 Reflection notes
+The ```handle_connection``` method now includes more advanced handling of HTTP requests. 
+
+The method first sets up a reader to fetch the first line from the incoming request to understand what the visitor is looking for. Based on this first line:
+1. If the visitor requests the main page ("GET / HTTP/1.1"), the server immediately responds with the ```hello.html``` page.
+2. If the request is for the "/sleep" page ("GET /sleep HTTP/1.1"), the server waits for 5 seconds before responding with the same ```hello.html``` page.
+3. For any other requests that don't match the above patterns, the server responds with the "404.html" error page.
+
+This setup helps the server to not only direct users to the correct content based on their request but also to handle requests that simulate longer processing times.
 
 
 
