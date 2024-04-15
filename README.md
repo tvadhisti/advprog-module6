@@ -37,3 +37,10 @@ The method first sets up a reader to fetch the first line from the incoming requ
 
 This setup helps the server to not only direct users to the correct content based on their request but also to handle requests that simulate longer processing times.
 
+# Commit 5 Reflection notes
+The ThreadPool helps the program run more efficiently by allowing multiple tasks to be done at the same time using several threads. It starts by setting up the pool with a given number of threads, making sure there is at least one ```assert!(size > 0);```. It then creates a communication system with ```let (sender, receiver) = mpsc::channel();```, essential for sending tasks to these threads. To make sure tasks are handled safely and only one thread can take a task at a time, the system that receives tasks is protected with ```let receiver = Arc::new(Mutex::new(receiver));```
+
+Each thread, known as a worker, is set up to listen for tasks. This is done in a loop where each worker is given access to the task receiver ```workers.push(Worker::new(id, Arc::clone(&receiver)));```. When a task needs to be done, it's wrapped up ```let job = Box::new(f);``` and sent through this system to the workers ```self.sender.send(job).unwrap();```. The workers are always waiting to pick up a new task ```let job = receiver.lock().unwrap().recv().unwrap();```, and once they get one, they announce they're starting the task and then do the work ```println!("Worker {id} got a job; executing."); job();```
+
+   
+
