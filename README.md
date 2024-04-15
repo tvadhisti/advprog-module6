@@ -37,6 +37,3 @@ The method first sets up a reader to fetch the first line from the incoming requ
 
 This setup helps the server to not only direct users to the correct content based on their request but also to handle requests that simulate longer processing times.
 
-
-
-   
